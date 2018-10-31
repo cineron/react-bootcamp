@@ -14,26 +14,44 @@
         const name = "Ron"
         const handle = "@cineron"
 
-        const nameElement = React.createElement(
+        function NameComponent(props) {
+            return React.createElement(
             "h1",
             null,
-            name
-        )
+            props.name,
+            )
+        }
+        //moved to NameComponent
+        // const nameElement = React.createElement(
+            // "h1",
+            // null,
+            // props.name,
+            // )
 
-        const handleElement = React.createElement(
+        function HandleComponent(props) {
+            return React.createElement(
             "h2",
             null,
-            handle
-        )
+            props.handle,
+            )
+        }
+
+        // const handleElement = //moved to HandleComponent
 
         const wrapperElement = React.createElement(
             "div",
             { id: "container"},
-            nameElement,
-            handleElement
+            // nameElement,
+            // handleElement
+            // NameComponent, //won't work
+            // HandleComponent //won't work
+            React.createElement(NameComponent, {name: name}), //pass objects
+            React.createElement(HandleComponent, {handle: handle})
         )
         // console.log(headerElement);
         // console.log("React", window.React)
+        console.log("wrapperElement", wrapperElement)
+
         ReactDOM.render(wrapperElement, 
             document.getElementById("app"))
         
