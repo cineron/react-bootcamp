@@ -5,21 +5,23 @@
     <title>First React App</title>
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
 </head>
 <body>
     <div id="app"></div>
 
-    <script>
-        const name = "Ron"
-        const handle = "@cineron"
+    <script type="text/babel">
+        const name = "Ron";
+        const handle = "@cineron";
 
         function NameComponent(props) {
-            return React.createElement(
-            "h1",
-            null,
-            props.name,
-            )
+            // return React.createElement(
+            // "h1",
+            // null,
+            // props.name,
+            // )
+            return <h1>{props.name}</h1>
         }
         //moved to NameComponent
         // const nameElement = React.createElement(
@@ -29,31 +31,46 @@
             // )
 
         function HandleComponent(props) {
-            return React.createElement(
-            "h2",
-            null,
-            props.handle,
-            )
+            // return React.createElement(
+            // "h2",
+            // null,
+            // props.handle,
+            // )
+            return <h2>{props.handle}</h2>
         }
 
         // const handleElement = //moved to HandleComponent
 
-        const wrapperElement = React.createElement(
-            "div",
-            { id: "container"},
-            // nameElement,
-            // handleElement
-            // NameComponent, //won't work
-            // HandleComponent //won't work
-            React.createElement(NameComponent, {name: name}), //pass objects
-            React.createElement(HandleComponent, {handle: handle})
-        )
+        // const wrapperElement = React.createElement(
+        //     "div",
+        //     { id: "container"},
+        //     // nameElement,
+        //     // handleElement
+        //     // NameComponent, //won't work
+        //     // HandleComponent //won't work
+        //     React.createElement(NameComponent, {name: name}), //pass objects
+        //     React.createElement(HandleComponent, {handle: handle})
+        // )
+
+        //instead of using a "wrapperElement", create a function
+        function App(){
+            return (
+                <div id="container">
+                    <NameComponent name={name} />
+                    <HandleComponent handle={handle} />
+                </div>
+            )
+        }
+
+
+
+
         // console.log(headerElement);
         // console.log("React", window.React)
-        console.log("wrapperElement", wrapperElement)
+        console.log("wrapperElement", wrapperElement);
 
-        ReactDOM.render(wrapperElement, 
-            document.getElementById("app"))
+        ReactDOM.render(<App />, 
+            document.getElementById("app"));
         
     </script>
     
