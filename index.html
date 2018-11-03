@@ -29,14 +29,26 @@
                 super(props)
 
                 this.state = {
-                    
+                    friends: ["Jordan", "Mikenzi", "Jake"]
                 }
             }
+            handleAddFriend(){
+
+            }
+
+            handleRemoveFriend(name){
+                this.setState((currentState) => {
+                    return {
+                        friends: currentState.friends.filter((friend) => friend !== name)
+                    }
+                })
+            }
+
             render(){
-                const friends = ["Jordan", "Mikenzi", "Jake"];
+                // const friends = ["Jordan", "Mikenzi", "Jake"];
                 return (
                 <div>
-                    <FriendsList list={friends}/>
+                    <FriendsList list={this.state.friends}/>
                 </div>
             ) 
             }
