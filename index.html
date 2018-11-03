@@ -24,14 +24,32 @@
             )
         }
 
-        function App(){
-            const friends = ["Jordan", "Mikenzi", "Jake"];
-            return (
+        class App extends React.Component {
+            constructor(props){
+                super(props)
+
+                this.state = {
+                    
+                }
+            }
+            render(){
+                const friends = ["Jordan", "Mikenzi", "Jake"];
+                return (
                 <div>
                     <FriendsList list={friends}/>
                 </div>
-            )
+            ) 
+            }
         }
+
+        // function App(){
+        //     const friends = ["Jordan", "Mikenzi", "Jake"];
+        //     return (
+        //         <div>
+        //             <FriendsList list={friends}/>
+        //         </div>
+        //     )
+        // }
 
         ReactDOM.render(<App />, 
             document.getElementById("app")
